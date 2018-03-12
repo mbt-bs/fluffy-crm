@@ -1,0 +1,11 @@
+### Log file
+*.log
+
+### IntelliJ project files
+.idea
+.idea/fluffy-crm.iml
+.idea_modules
+
+### Gradle template
+.gradle
+/build/
