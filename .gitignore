@@ -2,8 +2,7 @@
 *.log
 
 ### IntelliJ project files
-.idea
-.idea/fluffy-crm.iml
+.idea/
 .idea_modules
 
 ### Gradle template
