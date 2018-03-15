@@ -4,14 +4,6 @@ public class CustomerLink {
     private Integer id;
     private String name;
 
-    public CustomerLink() {
-    }
-
-    public CustomerLink(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
     public Integer getId() {
         return id;
     }

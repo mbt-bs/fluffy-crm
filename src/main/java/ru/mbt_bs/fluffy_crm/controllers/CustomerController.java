@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import ru.mbt_bs.fluffy_crm.data.json.Customer;
 import ru.mbt_bs.fluffy_crm.data.json.CustomerLink;
 import ru.mbt_bs.fluffy_crm.services.CustomerService;
 
@@ -23,8 +24,13 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @RequestMapping("/clients")
-    public List<CustomerLink> getClients(@RequestParam(name = "name", required = false) String name) {
+    @RequestMapping("/customer")
+    public Customer getCustomer(@RequestParam(name = "id", required = false) Integer id) {
+        return customerService.getCustomer(id);
+    }
+
+    @RequestMapping("/customers")
+    public List<CustomerLink> getCustomerLinks(@RequestParam(name = "name", required = false) String name) {
         return customerService.getCustomers(name);
     }
 }
