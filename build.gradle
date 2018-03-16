@@ -15,9 +15,9 @@ apply plugin: 'io.spring.dependency-management'
 
 bootJar {
     baseName = 'fluffy-crm'
-    version =  '0.1.0'
+//    version =  '0.1.0'
     manifest {
-        attributes "Main-Class": "ru.mbt_bs.fluffy_crm.Application"
+        attributes "Start-Class": "ru.mbt_bs.fluffy_crm.Application"
     }
     launchScript()
 }
