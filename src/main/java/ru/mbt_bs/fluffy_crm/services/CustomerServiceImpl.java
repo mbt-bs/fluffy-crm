@@ -19,12 +19,17 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<CustomerLink> getCustomers(String name) {
-        return CustomerConverter.convertCustomerLinks(customerRepository.getCustomerLinks(name));
+    public Customer getCustomer(Integer id) {
+        return CustomerConverter.convertCustomer(customerRepository.getCustomer(id));
     }
 
     @Override
-    public Customer getCustomer(Integer id) {
-        return CustomerConverter.convertCustomer(customerRepository.getCustomer(id));
+    public void updateCustomer(Customer customer) {
+        customerRepository.updateCustomer(customer);
+    }
+
+    @Override
+    public List<CustomerLink> getCustomers(String name) {
+        return CustomerConverter.convertCustomerLinks(customerRepository.getCustomerLinks(name));
     }
 }
