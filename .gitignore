@@ -8,3 +8,6 @@
 ### Gradle template
 .gradle
 /build/
+
+### Temporary remove frontend
+/src/main/resources/static/
