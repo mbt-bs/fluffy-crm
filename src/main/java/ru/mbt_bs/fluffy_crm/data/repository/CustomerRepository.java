@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface CustomerRepository {
-    Map<String, Object> getCustomer(Integer id);
+    Map<String, Object> getCustomer(Long id);
     void updateCustomer(Customer customer);
     List<Map<String, Object>> getCustomerLinks(String name);
 }

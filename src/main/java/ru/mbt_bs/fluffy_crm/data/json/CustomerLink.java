@@ -1,14 +1,14 @@
 package ru.mbt_bs.fluffy_crm.data.json;
 
 public class CustomerLink {
-    private Integer id;
+    private Long id;
     private String name;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

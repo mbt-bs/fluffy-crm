@@ -25,7 +25,7 @@ public class CustomerController {
     }
 
     @RequestMapping("/customer")
-    public Customer getCustomer(@RequestParam(name = "id", required = false) Integer id) {
+    public Customer getCustomer(@RequestParam(name = "id", required = false) Long id) {
         return customerService.getCustomer(id);
     }
 

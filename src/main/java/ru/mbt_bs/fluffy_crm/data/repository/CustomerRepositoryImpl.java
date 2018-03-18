@@ -5,12 +5,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
 import ru.mbt_bs.fluffy_crm.data.json.Customer;
-import ru.mbt_bs.fluffy_crm.data.json.CustomerLink;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
-import java.text.SimpleDateFormat;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +15,6 @@ import java.util.Map;
 public class CustomerRepositoryImpl implements CustomerRepository {
     private final JdbcTemplate jdbcTemplate;
     private GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     @Autowired
     public CustomerRepositoryImpl(JdbcTemplate jdbcTemplate) {
@@ -26,8 +22,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public Map<String, Object> getCustomer(Integer id) {
-        return jdbcTemplate.queryForMap("SELECT * FROM customer WHERE id=" + id);
+    public Map<String, Object> getCustomer(Long id) {
+        return jdbcTemplate.queryForMap("SELECT * FROM customer WHERE id=?", id);
     }
 
     @Override
@@ -44,7 +40,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                 ps.setString(5, customer.getComment());
                 return ps;
             }, keyHolder);
-            customer.setId((Integer) keyHolder.getKey());
+            customer.setId((Long) keyHolder.getKey());
         } else {
             jdbcTemplate.update("UPDATE customer SET name=?,date=?,phone=?,email=?,comment=? WHERE id=?",
                     customer.getName(), customer.getBirthDate(), customer.getPhone(), customer.getEmail(),
@@ -54,7 +50,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public List<Map<String, Object>> getCustomerLinks(String name) {
-        List<CustomerLink> result = new LinkedList<>();
         StringBuilder query = new StringBuilder("SELECT id,name FROM customer ");
         if (name != null && !name.isEmpty()) {
             query.append(" WHERE UPPER(name) LIKE '%");
@@ -64,7 +59,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             query.append("' ");
         }
         query.append("ORDER BY name");
-
         return jdbcTemplate.queryForList(query.toString());
     }
 }
