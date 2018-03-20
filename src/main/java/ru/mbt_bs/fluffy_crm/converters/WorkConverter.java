@@ -1,6 +1,6 @@
 package ru.mbt_bs.fluffy_crm.converters;
 
-import ru.mbt_bs.fluffy_crm.data.json.Customer;
+import ru.mbt_bs.fluffy_crm.data.json.CustomerLink;
 import ru.mbt_bs.fluffy_crm.data.json.Service;
 import ru.mbt_bs.fluffy_crm.data.json.Work;
 
@@ -15,7 +15,7 @@ public class WorkConverter {
         for (Map row : workList) {
             Work work = new Work();
             work.setId((Long) row.get("id"));
-            work.setCustomer(new Customer((Long) row.get("customer_id")));
+            work.setCustomer(new CustomerLink((Long) row.get("customer_id")));
             work.setService(new Service((Long) row.get("service_id")));
             work.setDate(new Date(((java.sql.Date) row.get("date")).getTime()));
             result.add(work);

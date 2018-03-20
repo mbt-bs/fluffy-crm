@@ -34,4 +34,8 @@ public class CustomerConverter {
         }
         return result;
     }
+
+    public static String convertName(Map<String, Object> row) {
+        return (String) row.get("name");
+    }
 }

@@ -4,6 +4,13 @@ public class CustomerLink {
     private Long id;
     private String name;
 
+    public CustomerLink() {
+    }
+
+    public CustomerLink(Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }

@@ -9,4 +9,5 @@ public interface CustomerRepository {
     Map<String, Object> getCustomer(Long id);
     void updateCustomer(Customer customer);
     List<Map<String, Object>> getCustomerLinks(String name);
+    Map<String, Object> getCustomerLinkNameById(Long id);
 }

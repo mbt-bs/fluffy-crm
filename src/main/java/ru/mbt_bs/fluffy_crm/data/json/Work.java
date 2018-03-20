@@ -1,11 +1,14 @@
 package ru.mbt_bs.fluffy_crm.data.json;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Work {
     private Long id;
-    private Customer customer;
+    private CustomerLink customer;
     private Service service;
+    @JsonFormat(pattern = "dd.MM.yyyy")
     private Date date;
 
     public Long getId() {
@@ -16,11 +19,11 @@ public class Work {
         this.id = id;
     }
 
-    public Customer getCustomer() {
+    public CustomerLink getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(CustomerLink customer) {
         this.customer = customer;
     }
 

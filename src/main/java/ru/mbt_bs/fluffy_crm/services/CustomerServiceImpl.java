@@ -1,6 +1,7 @@
 package ru.mbt_bs.fluffy_crm.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import ru.mbt_bs.fluffy_crm.converters.CustomerConverter;
 import ru.mbt_bs.fluffy_crm.data.json.Customer;
@@ -16,7 +17,7 @@ public class CustomerServiceImpl implements CustomerService {
     private WorkService workService;
 
     @Autowired
-    public CustomerServiceImpl(CustomerRepository customerRepository, WorkService workService) {
+    public CustomerServiceImpl(CustomerRepository customerRepository, @Lazy WorkService workService) {
         this.customerRepository = customerRepository;
         this.workService = workService;
     }
@@ -35,5 +36,13 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<CustomerLink> getCustomers(String name) {
         return CustomerConverter.convertCustomerLinks(customerRepository.getCustomerLinks(name));
+    }
+
+    @Override
+    public void fillCustomerLinksInWorkList(List<Work> works) {
+        for (Work work : works) {
+            work.getCustomer().setName(CustomerConverter.convertName(
+                    customerRepository.getCustomerLinkNameById(work.getCustomer().getId())));
+        }
     }
 }

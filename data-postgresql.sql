@@ -3,7 +3,7 @@ SET client_encoding = 'UTF8';
 DROP TABLE IF EXISTS customer;
 CREATE TABLE customer
 (
-    id      SERIAL PRIMARY KEY NOT NULL,
+    id      BIGINT PRIMARY KEY NOT NULL,
     name    VARCHAR(250)       NOT NULL,
     date    DATE,
     phone   VARCHAR(20),
@@ -20,7 +20,7 @@ VALUES ('Сидоров Сидор Сидорович', '1984-12-07', '+79997359
 DROP TABLE IF EXISTS service;
 CREATE TABLE service
 (
-    id    SERIAL PRIMARY KEY NOT NULL,
+    id    BIGINT PRIMARY KEY NOT NULL,
     title VARCHAR(250)       NOT NULL
 );
 INSERT INTO service (title) VALUES ('тест1');
@@ -30,7 +30,7 @@ INSERT INTO service (title) VALUES ('тест3');
 DROP TABLE IF EXISTS works;
 CREATE TABLE works
 (
-    id          SERIAL PRIMARY KEY NOT NULL,
+    id          BIGINT PRIMARY KEY NOT NULL,
     customer_id SERIAL             NOT NULL,
     service_id  SERIAL             NOT NULL,
     date        DATE

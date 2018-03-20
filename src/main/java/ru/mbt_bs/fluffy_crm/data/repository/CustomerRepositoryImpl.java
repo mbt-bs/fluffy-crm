@@ -61,4 +61,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         query.append("ORDER BY name");
         return jdbcTemplate.queryForList(query.toString());
     }
+
+    @Override
+    public Map<String, Object> getCustomerLinkNameById(Long id) {
+        return jdbcTemplate.queryForMap("SELECT name FROM customer WHERE id=?", id);
+    }
 }
