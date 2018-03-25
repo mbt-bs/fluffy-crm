@@ -29,7 +29,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public void updateCustomer(Customer customer) {
         if (customer.getId() == null) {
-            String query = "INSERT INTO customer (name,date,phone,email,comment) VALUES (?,?,?,?,?)";
+            String query = "INSERT INTO customer (name,bdate,phone,email,comment) VALUES (?,?,?,?,?)";
             jdbcTemplate.update(con -> {
                 PreparedStatement ps = con.prepareStatement(query, new String[]{"id"});
                 ps.setString(1, customer.getName());
@@ -42,7 +42,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             }, keyHolder);
             customer.setId((Long) keyHolder.getKey());
         } else {
-            jdbcTemplate.update("UPDATE customer SET name=?,date=?,phone=?,email=?,comment=? WHERE id=?",
+            jdbcTemplate.update("UPDATE customer SET name=?,bdate=?,phone=?,email=?,comment=? WHERE id=?",
                     customer.getName(), customer.getBirthDate(), customer.getPhone(), customer.getEmail(),
                     customer.getComment(), customer.getId());
         }
