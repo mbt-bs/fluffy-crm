@@ -11,6 +11,7 @@ import ru.mbt_bs.fluffy_crm.services.ServiceService;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class ServiceController {
