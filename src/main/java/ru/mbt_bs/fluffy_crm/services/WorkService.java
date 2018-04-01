@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface WorkService {
     List<Work> getWorkAndServiceList(Long id);
+
+    void updateWork(Work work);
 }

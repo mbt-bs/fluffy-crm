@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class ServiceController {
-    private static final Logger logger = LoggerFactory.getLogger(CustomerController.class);
+    private static final Logger logger = LoggerFactory.getLogger(ServiceController.class);
 
     private ServiceService serviceService;
 
@@ -38,5 +38,4 @@ public class ServiceController {
                 ? ResponseEntity.status(HttpStatus.OK).body(service)
                 : ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
-
 }

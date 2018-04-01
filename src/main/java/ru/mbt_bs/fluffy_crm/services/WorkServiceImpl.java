@@ -30,4 +30,9 @@ public class WorkServiceImpl implements WorkService {
         serviceService.fillServiceInWorkList(result);
         return result;
     }
+
+    @Override
+    public void updateWork(Work work) {
+        workRepository.updateWork(work);
+    }
 }
