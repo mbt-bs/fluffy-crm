@@ -41,7 +41,7 @@ public class ServiceRepositoryImpl implements ServiceRepository {
             }, keyHolder);
             service.setId((Long) keyHolder.getKey());
         } else {
-            jdbcTemplate.update("UPDATE service SET title=? WHERE id=?", service.getTitle());
+            jdbcTemplate.update("UPDATE service SET title=? WHERE id=?", service.getTitle(), service.getId());
         }
     }
 }
