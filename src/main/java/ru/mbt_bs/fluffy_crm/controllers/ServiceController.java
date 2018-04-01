@@ -5,10 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.mbt_bs.fluffy_crm.data.json.Service;
 import ru.mbt_bs.fluffy_crm.services.ServiceService;
 
@@ -27,8 +24,8 @@ public class ServiceController {
     }
 
     @RequestMapping("/services")
-    public List<Service> getServices() {
-        return serviceService.getServices();
+    public List<Service> getServices(@RequestParam(name = "title", required = false) String title) {
+        return serviceService.getServices(title);
     }
 
     @RequestMapping(value = "/service", method = RequestMethod.PUT)

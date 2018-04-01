@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
+import ru.mbt_bs.fluffy_crm.converters.SQLConverter;
 import ru.mbt_bs.fluffy_crm.data.json.Customer;
 
 import java.sql.Date;
@@ -50,16 +51,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public List<Map<String, Object>> getCustomerLinks(String name) {
-        StringBuilder query = new StringBuilder("SELECT id,name FROM customer ");
-        if (name != null && !name.isEmpty()) {
-            query.append(" WHERE UPPER(name) LIKE '%");
-            for (char Char : name.toUpperCase().toCharArray()) {
-                query.append(Char).append("%");
-            }
-            query.append("' ");
-        }
-        query.append("ORDER BY name");
-        return jdbcTemplate.queryForList(query.toString());
+        return jdbcTemplate.queryForList("SELECT id,name FROM customer WHERE UPPER(name) LIKE '"
+                + SQLConverter.convertStringToLiker(name) + "' ORDER BY name");
     }
 
     @Override

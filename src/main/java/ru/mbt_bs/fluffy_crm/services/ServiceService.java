@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ServiceService {
 
-    List<Service> getServices();
+    List<Service> getServices(String title);
 
     void fillServiceInWorkList(List<Work> result);
 

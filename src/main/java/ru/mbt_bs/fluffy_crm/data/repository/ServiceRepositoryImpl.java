@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
+import ru.mbt_bs.fluffy_crm.converters.SQLConverter;
 import ru.mbt_bs.fluffy_crm.data.json.Service;
 
 import java.sql.PreparedStatement;
@@ -43,5 +44,11 @@ public class ServiceRepositoryImpl implements ServiceRepository {
         } else {
             jdbcTemplate.update("UPDATE service SET title=? WHERE id=?", service.getTitle(), service.getId());
         }
+    }
+
+    @Override
+    public List<Map<String, Object>> getServicesByTitle(String title) {
+        return jdbcTemplate.queryForList("SELECT id,title FROM service WHERE UPPER(title) LIKE '"
+                + SQLConverter.convertStringToLiker(title) + "' ORDER BY title");
     }
 }

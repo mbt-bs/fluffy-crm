@@ -7,6 +7,7 @@ import ru.mbt_bs.fluffy_crm.data.json.Work;
 import ru.mbt_bs.fluffy_crm.data.repository.ServiceRepository;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ServiceServiceImpl implements ServiceService {
@@ -18,8 +19,10 @@ public class ServiceServiceImpl implements ServiceService {
     }
 
     @Override
-    public List<ru.mbt_bs.fluffy_crm.data.json.Service> getServices() {
-        return ServiceConverter.convertServiceList(serviceRepository.getAllServices());
+    public List<ru.mbt_bs.fluffy_crm.data.json.Service> getServices(String title) {
+        List<Map<String, Object>> data = title == null ? serviceRepository.getAllServices()
+                : serviceRepository.getServicesByTitle(title);
+        return ServiceConverter.convertServiceList(data);
     }
 
     @Override

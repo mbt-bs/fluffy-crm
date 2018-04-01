@@ -11,4 +11,6 @@ public interface ServiceRepository {
     List<Map<String, Object>> getAllServices();
 
     void updateService(Service service);
+
+    List<Map<String,Object>> getServicesByTitle(String title);
 }
