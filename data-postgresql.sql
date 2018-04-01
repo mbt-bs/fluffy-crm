@@ -17,15 +17,15 @@ VALUES ('Петров Пётр Петрович', '1992-12-14', '+79998469537', 
 INSERT INTO customer (name, bdate, phone, email, comment)
 VALUES ('Сидоров Сидор Сидорович', '1984-12-07', '+79997359658', 'sidr@sidr.ru', 'тест3');
 
-DROP TABLE IF EXISTS service;
-CREATE TABLE service
+DROP TABLE IF EXISTS serviceService;
+CREATE TABLE serviceService
 (
     id    BIGINT PRIMARY KEY NOT NULL,
     title VARCHAR(250)       NOT NULL
 );
-INSERT INTO service (title) VALUES ('тест1');
-INSERT INTO service (title) VALUES ('тест2');
-INSERT INTO service (title) VALUES ('тест3');
+INSERT INTO serviceService (title) VALUES ('тест1');
+INSERT INTO serviceService (title) VALUES ('тест2');
+INSERT INTO serviceService (title) VALUES ('тест3');
 
 DROP TABLE IF EXISTS works;
 CREATE TABLE works

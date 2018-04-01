@@ -18,6 +18,11 @@ public class ServiceServiceImpl implements ServiceService {
     }
 
     @Override
+    public List<ru.mbt_bs.fluffy_crm.data.json.Service> getServices() {
+        return ServiceConverter.convertServiceList(serviceRepository.getAllServices());
+    }
+
+    @Override
     public void fillServiceInWorkList(List<Work> workList) {
         for (Work work : workList) {
             work.getService().setTitle(
@@ -26,5 +31,10 @@ public class ServiceServiceImpl implements ServiceService {
                     )
             );
         }
+    }
+
+    @Override
+    public void updateService(ru.mbt_bs.fluffy_crm.data.json.Service service) {
+        serviceRepository.updateService(service);
     }
 }
