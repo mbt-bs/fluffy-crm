@@ -34,7 +34,7 @@ public class WorkRepositoryImpl implements WorkRepository {
                 PreparedStatement ps = con.prepareStatement(query, new String[]{"id"});
                 ps.setLong(1, work.getCustomer().getId());
                 ps.setLong(2, work.getService().getId());
-                ps.setDate(2, work.getDate() == null ? null
+                ps.setDate(3, work.getDate() == null ? null
                         : new Date(work.getDate().getTime()));
                 return ps;
             }, keyHolder);
